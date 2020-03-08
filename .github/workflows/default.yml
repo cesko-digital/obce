@@ -11,6 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Build
       run: |
-        wget -O all.xml 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+        wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+        gunzip all.xml.gz
         yarn install
         RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
