@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Build
+      run: |
+        wget 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm' -o all.xml
+        yarn install
+        RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
