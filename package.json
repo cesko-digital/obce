@@ -1,6 +1,11 @@
 {
-  "name": "hackday1-listofcities",
-  "author": "Vojtech Uhlir <uhlirvoj1@gmail.com>",
+  "name": "obce",
+  "description": "A machine-readable list of Czech municipalities with basic info",
+  "contributors": [
+    "Vojtěch Uhlíř <uhlirvoj1@gmail.com>",
+    "Tomáš Znamenáček <zoul@cesko.digital>"
+  ],
+  "homepage": "https://github.com/cesko-digital/obce",
   "license": "GPL-3.0",
   "scripts": {
     "start": "ts-node ./src/index.ts",
