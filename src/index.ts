@@ -32,8 +32,10 @@ async function convertData(
   console.info(`Parsing ${inputName}, this can take a while.`);
   const doc = parseXml(readFileSync(inputName).toString());
   const subjects = parseAllValidSubjects(doc).filter(isInterestingSubject);
-  console.info(`Parsed ${subjects.length} items, downloading extra data.`);
-  const data = await addExtraData(subjects, dataSources);
+  console.info(
+    `Parsed ${subjects.length} items, downloading extra data for a sample of them.`
+  );
+  const data = await addExtraData(subjects.slice(0, 9), dataSources);
   writeFileSync(outputName, JSON.stringify(data, null, 2));
   console.info(`Output written to ${outputName}.`);
 }
