@@ -7,6 +7,22 @@ import { parseAllValidSubjects } from "./parsing";
 import { readFileSync, writeFileSync } from "fs";
 import { Subjekt } from "./types";
 
+/** A simple response envelope with basic metadata */
+interface Envelope {
+  /**
+   * When was the data generated?
+   *
+   * A simplified extended ISO format (ISO 8601) as created by `Date.toISOString`.
+   */
+  timestamp: string;
+
+  /** Number of results returned in `municipalities` */
+  itemCount: Number;
+
+  /** The data itself */
+  municipalities: Subjekt[];
+}
+
 function simplifiedSubjectName(name: string): string {
   const prefixes = [
     /obec\s*/i,
@@ -36,7 +52,12 @@ async function convertData(
     `Parsed ${subjects.length} items, downloading extra data for a sample of them.`
   );
   const data = await addExtraData(subjects.slice(0, 9), dataSources);
-  writeFileSync(outputName, JSON.stringify(data, null, 2));
+  const envelope: Envelope = {
+    timestamp: new Date().toISOString(),
+    itemCount: data.length,
+    municipalities: data
+  };
+  writeFileSync(outputName, JSON.stringify(envelope, null, 2));
   console.info(`Output written to ${outputName}.`);
 }
 
