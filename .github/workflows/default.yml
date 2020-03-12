@@ -16,6 +16,10 @@ jobs:
         yarn install
         yarn test
         RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
+    - name: Prepare for upload
+      run: |
+        mkdir dist
+        mv obce.json dist
     - name: Upload artifacts
       uses: jakejarvis/s3-sync-action@master
       with:
@@ -25,5 +29,5 @@ jobs:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
         AWS_REGION: 'eu-central-1'
-        SOURCE_DIR: 'obce.json'
+        SOURCE_DIR: 'dist'
         DEST_DIR: 'obce/1'
