@@ -36,6 +36,18 @@ function simplifiedSubjectName(name: string): string {
   return name;
 }
 
+function parseItemLimit(
+  str: string | undefined,
+  defaultV: number = Number.MAX_VALUE
+): number {
+  if (str != null) {
+    const val = parseInt(str);
+    return isNaN(val) ? defaultV : val;
+  } else {
+    return defaultV;
+  }
+}
+
 function isInterestingSubject(s: Subjekt): boolean {
   return s.pravniForma.type === 801 || s.pravniForma.type === 811;
 }
@@ -48,10 +60,12 @@ async function convertData(
   console.info(`Parsing ${inputName}, this can take a while.`);
   const doc = parseXml(readFileSync(inputName).toString());
   const subjects = parseAllValidSubjects(doc).filter(isInterestingSubject);
-  console.info(
-    `Parsed ${subjects.length} items, downloading extra data for a sample of them.`
-  );
-  const data = await addExtraData(subjects.slice(0, 9), dataSources);
+  const limit = parseItemLimit(process.env["LIMIT"]);
+  if (limit != Number.MAX_VALUE) {
+    console.log(`Limiting data to a subset of ${limit} items as requested.`);
+  }
+  console.info(`Parsed ${subjects.length} items, downloading extra data.`);
+  const data = await addExtraData(subjects.slice(0, limit), dataSources);
   const envelope: Envelope = {
     timestamp: new Date().toISOString(),
     itemCount: data.length,

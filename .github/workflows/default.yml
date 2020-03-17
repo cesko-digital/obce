@@ -15,7 +15,7 @@ jobs:
         gunzip all.xml.gz
         yarn install
         yarn test
-        RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
+        LIMIT=10 RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
     - name: Prepare for upload
       run: |
         mkdir dist
