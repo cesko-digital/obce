@@ -6,7 +6,7 @@
     "Tomáš Znamenáček <zoul@cesko.digital>"
   ],
   "homepage": "https://github.com/cesko-digital/obce",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "scripts": {
     "start": "ts-node ./src/index.ts",
     "test": "jest"
