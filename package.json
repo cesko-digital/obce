@@ -17,7 +17,6 @@
     "acorn": "^6.4.1",
     "axios": "0.19.0",
     "libxmljs": "^0.19.7",
-    "minimist": "^1.2.2",
     "nodemon": "2.0.1",
     "ts-node": "8.5.3",
     "typescript": "3.7.2",
@@ -32,6 +31,9 @@
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "prettier": "1.19.1"
+  },
+  "resolutions": {
+    "minimist": "^1.2.2"
   },
   "prettier": {
     "quoteProps": "consistent"
