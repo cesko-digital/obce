@@ -6,6 +6,7 @@ import { parseXml } from "libxmljs";
 import { parseAllValidSubjects } from "./parsing";
 import { readFileSync, writeFileSync } from "fs";
 import { Subjekt } from "./types";
+import { normalizeMunicipalityName } from "./naming";
 
 /** A simple response envelope with basic metadata */
 interface Envelope {
@@ -102,6 +103,10 @@ const dataSources: DataSource<any>[] = [
   {
     id: "erb",
     fetch: async s => guessMunicipalityCOA(simplifiedSubjectName(s.nazev))
+  },
+  {
+    id: "hezkyNazev",
+    fetch: async s => normalizeMunicipalityName(s.nazev)
   }
 ];
 
