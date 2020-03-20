@@ -75,12 +75,15 @@ function parseChildAttValue(elem: Element, childName: string): string | null {
 }
 
 function getFirstChildElem(elem: Element, childName: string): Element | null {
-  const child = elem.find(`xmlns:${childName}`, namespace)[0];
-  if (child?.type() === "element") {
-    return child as Element;
-  } else {
-    return null;
+  for (const candidate of elem.childNodes()) {
+    if (candidate.type() === "element") {
+      const elem = candidate as Element;
+      if (elem.name() === childName) {
+        return elem;
+      }
+    }
   }
+  return null;
 }
 
 function map<T, U>(value: T | null, f: (_: T) => U): U | null {
