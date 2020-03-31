@@ -26,6 +26,7 @@ Wishlist:
   "zkratka": "NACHOD",
   "ICO": "00272868",
   "nazev": "MĚSTO NÁCHOD",
+  "hezkyNazev": "Náchod",
   "datovaSchrankaID": "gmtbqhx",
   "pravniForma": {
     "type": 801,
