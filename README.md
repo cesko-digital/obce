@@ -67,6 +67,8 @@ Aktualizace je zatím náhodná, pravidelné generování viz [#2](https://githu
 * Kdybyste chtěli přispět (budeme moc rádi!), tak zdrojový kód a commity anglicky, všecko ostatní může být česky.
 
 ```bash
+$ wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+$ gunzip all.xml.gz
 $ yarn install
 $ yarn test
 $ RUIAN_API_KEY=… LIMIT=10 yarn start
