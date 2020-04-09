@@ -65,8 +65,9 @@ function parseAdresa(elem: Element): Adresa | null {
 }
 
 function parseEmails(elem: Element): string[] {
-  const elems = elem.find("xmlns:Email/xmlns:Polozka/xmlns:Email", namespace);
-  return elems.map(e => (e as Element).text());
+  const emails = elem.find("xmlns:Email/xmlns:Polozka/xmlns:Email", namespace);
+  const elems = emails.map(e => (e as Element).text())
+  return elems.filter((item, index) => elems.indexOf(item) === index)
 }
 
 function parseChildAttValue(elem: Element, childName: string): string | null {
