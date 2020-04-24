@@ -31,3 +31,30 @@ test("Parse single subject", () => {
     }
   });
 });
+
+test("Parse single subject with duplicated emails", () => {
+  const doc = parseFixture("boskovice_duplicit_emails.xml");
+  const subjekt = parseAllValidSubjects(doc)[0];
+  expect(subjekt).toEqual({
+    zkratka: "Boskovice",
+    ICO: "00279978",
+    nazev: "Město Boskovice",
+    datovaSchrankaID: "qmkbq7h",
+    mail: ["epodatelna@boskovice.cz"],
+    pravniForma: {
+      type: 801,
+      label: "Obec"
+    },
+    adresaUradu: {
+      PSC: "68001",
+      adresniBod: "15259641",
+      castObce: "Boskovice",
+      cisloDomovni: "4",
+      cisloOrientacni: "2",
+      kraj: "Jihomoravský",
+      obec: "Boskovice",
+      obecKod: "581372",
+      ulice: "Masarykovo náměstí"
+    }
+  });
+});
