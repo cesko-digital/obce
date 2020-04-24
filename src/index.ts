@@ -4,7 +4,7 @@ import { guessMunicipalityCOA } from "./coa";
 import { DataSource, addExtraData } from "./sources";
 import { parseXml } from "libxmljs";
 import { parseAllValidSubjects } from "./parsing";
-import { readFileSync, writeFileSync } from "fs";
+import { readFileSync, writeFileSync, existsSync} from "fs";
 import { Subjekt } from "./types";
 import { normalizeMunicipalityName } from "./naming";
 
@@ -110,4 +110,10 @@ const dataSources: DataSource<any>[] = [
   }
 ];
 
-convertData(dataSources, "all.xml");
+const DATA_FILE = "all.xml";
+if (existsSync(DATA_FILE)) {
+  convertData(dataSources, DATA_FILE);
+} else {
+  console.error(`The script requires presence of the dataset (${DATA_FILE})! Please download it and try again.`);
+}
+
