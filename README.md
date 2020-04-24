@@ -64,6 +64,7 @@ Aktualizace probíhá jednou týdně v noci ze soboty na neděli.
 * Větev `master` je release větev, každá změna v ní vede k přegenerování celého datasetu. Což trvá dlouho a nechceme to dělat často.
 * Proto jde většina běžné práce do větve `next` a do `master` se merguje občas.
 * Pro lokální testování budete potřebovat API klíč od [api.store](https://www.api.store/cuzk.cz/).
+* Verzování releasů: x.y.z, kde _x_ se mění při zpětně nekompatibilních změnách, _y_ při zpětně kompatibilních změnách a _z_ tam, kde jsme neměnili formát dat, jen kód pro jejich generování.
 * Kdybyste chtěli přispět (budeme moc rádi!), tak zdrojový kód a commity anglicky, všecko ostatní může být česky.
 
 ```bash
