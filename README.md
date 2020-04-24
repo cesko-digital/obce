@@ -57,7 +57,7 @@ https://data.cesko.digital/obce/1/obce.json
 
 Číslo `1` v URL značí hlavní komponentu verze, která se bude zvedat, pokud dojde ke zpětně nekompatibilním změnám ([semver](https://semver.org)).
 
-Aktualizace je zatím náhodná, pravidelné generování viz [#2](https://github.com/cesko-digital/obce/issues/2).
+Aktualizace probíhá jednou týdně v noci ze soboty na neděli.
 
 ## Hacking
 
