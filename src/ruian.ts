@@ -1,17 +1,14 @@
 import axios from "axios";
 import proj4 from "proj4";
 
-export type WGS84 = { _type: "WGS84" };
-export type S_JTSK = { _type: "S-JTSK" };
-export type CoordinateSystem = WGS84 | S_JTSK;
-export type Location<T extends CoordinateSystem> = [number, number] & T;
+export type WGS84Location = [number, number]
 
 const ENDPOINT = "https://api.apitalks.store/cuzk.cz/adresni-mista-cr?";
 
 export async function getLocation(
   addressPoint: string,
   apiKey: string
-): Promise<Location<WGS84> | null> {
+): Promise<WGS84Location | null> {
   const response = await axios.get(ENDPOINT, {
     headers: {
       "x-api-key": apiKey
@@ -36,11 +33,10 @@ export async function getLocation(
   }
 }
 
-// TODO: Switch to proj4js instead.
 export function convertCoordinatesJtskToWgs(
   X: number,
   Y: number
-) : Location<WGS84> {
+) : WGS84Location {
   if (X < 0) {
     X = -X;
   }
@@ -55,5 +51,5 @@ export function convertCoordinatesJtskToWgs(
   );
 
   var point = proj4.transform(proj4.Proj("EPSG:5514"), proj4.Proj("WGS84"), proj4.toPoint([-Y, -X]));
-  return [point.y, point.x] as Location<WGS84>;
+  return [point.y, point.x] as WGS84Location;
 };
