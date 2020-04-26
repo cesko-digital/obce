@@ -31,3 +31,9 @@ test("Parse single subject", () => {
     }
   });
 });
+
+test("Parse single subject with duplicated emails", () => {
+  const doc = parseFixture("boskovice_duplicit_emails.xml");
+  const subjekt = parseAllValidSubjects(doc)[0];
+  expect(subjekt.mail).toEqual(["epodatelna@boskovice.cz"]);
+});

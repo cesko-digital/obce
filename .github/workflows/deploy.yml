@@ -3,12 +3,16 @@ name: Deploy
 on:
   push:
     branches: [master]
+  schedule:
+    - cron: '59 23 * * 6'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+        with:
+          ref: 'master'
       - name: Build & Test & Run
         run: |
           wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'

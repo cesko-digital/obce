@@ -57,16 +57,19 @@ https://data.cesko.digital/obce/1/obce.json
 
 Číslo `1` v URL značí hlavní komponentu verze, která se bude zvedat, pokud dojde ke zpětně nekompatibilním změnám ([semver](https://semver.org)).
 
-Aktualizace je zatím náhodná, pravidelné generování viz [#2](https://github.com/cesko-digital/obce/issues/2).
+Aktualizace probíhá jednou týdně v noci ze soboty na neděli.
 
 ## Hacking
 
 * Větev `master` je release větev, každá změna v ní vede k přegenerování celého datasetu. Což trvá dlouho a nechceme to dělat často.
 * Proto jde většina běžné práce do větve `next` a do `master` se merguje občas.
 * Pro lokální testování budete potřebovat API klíč od [api.store](https://www.api.store/cuzk.cz/).
+* Verzování releasů: x.y.z, kde _x_ se mění při zpětně nekompatibilních změnách, _y_ při zpětně kompatibilních změnách a _z_ tam, kde jsme neměnili formát dat, jen kód pro jejich generování.
 * Kdybyste chtěli přispět (budeme moc rádi!), tak zdrojový kód a commity anglicky, všecko ostatní může být česky.
 
 ```bash
+$ wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+$ gunzip all.xml.gz
 $ yarn install
 $ yarn test
 $ RUIAN_API_KEY=… LIMIT=10 yarn start

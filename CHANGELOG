@@ -1,2 +1,6 @@
+1.0.2 2020-4-24
+    - Odstranění duplicitních e-mailů v kontaktech (Tomas Michalek)
+    - Konverze souřadnic z S-JTSK na WGS84 pomocí Proj4js (Tomas Michalek)
+
 1.0.1 2020-3-30
-    - Přibyla hodnota hezkyNazev s „lidským“ názvem obce
+    - Přibyla hodnota hezkyNazev s „lidským“ názvem obce (zoul)
