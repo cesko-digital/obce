@@ -66,14 +66,22 @@ async function addExtraDataToSubject<T>(
   };
 }
 
+function cacheLocation() {
+  if (process.env["CACHE"] != null) {
+    return process.env["CACHE"];
+  }
+  
+  return "./.data/cache.json"
+}
+
 function saveCache(cache: Cache) {
   const encoded = JSON.stringify(cache, null, 2);
-  writeFileSync(`cache.json`, encoded);
+  writeFileSync(cacheLocation(), encoded);
 }
 
 function loadCache(): Cache {
   try {
-    const encoded = readFileSync(`cache.json`).toString();
+    const encoded = readFileSync(cacheLocation()).toString();
     return JSON.parse(encoded);
   } catch {
     return {};
