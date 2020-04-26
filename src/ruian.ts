@@ -53,3 +53,4 @@ export function convertCoordinatesJtskToWgs(
   var point = proj4.transform(proj4.Proj("EPSG:5514"), proj4.Proj("WGS84"), proj4.toPoint([-Y, -X]));
   return [point.y, point.x] as WGS84Location;
 };
+
