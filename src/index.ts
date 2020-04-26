@@ -7,7 +7,7 @@ import { parseAllValidSubjects } from "./parsing";
 import { readFileSync, writeFileSync, existsSync} from "fs";
 import { Subjekt } from "./types";
 import { normalizeMunicipalityName } from "./naming";
-import { findMayer } from './mayer';
+import { findMayer } from './meyer';
 
 /** A simple response envelope with basic metadata */
 interface Envelope {

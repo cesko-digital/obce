@@ -19,20 +19,24 @@ const properName = (name : string | null) => {
     return normalizeTitleCase(name); //???: Borrowing function for different purpose, but it works.
 }
 
-export function mapMayersTestable(
+export function mapMeyersTestable(
     datasource : any
 ) {
-    const municipalities = datasource["položky"].filter((obj : any) => obj["právní-forma"] === "právní-forma/801");
+    const dataset = datasource["položky"];
+    if (dataset == null) {
+        return [];
+    }
+    const municipalities = dataset.filter((obj : any) => obj["právní-forma"] === "právní-forma/801");
 
     return municipalities.map((obj : any) => {
         return {
             ico: obj["ičo"],
-            mayer: obj["osoba-v-čele"] ? obj["osoba-v-čele"].map((m : any) => properName(m["jméno"])).join(', ') : null
+            meyer: obj["osoba-v-čele"] ? obj["osoba-v-čele"].map((m : any) => properName(m["jméno"])).join(', ') : null
         }
     });
 }
 
-export function findMayerTestable(
+export function findMeyerTestable(
     ico : string | null,
     datasource: Array<Object>
 ): string | null {
@@ -48,12 +52,12 @@ export function findMayerTestable(
     if (!isObject(mayer))
         return null;
 
-    return (mayer['mayer']) as string | null;
+    return (mayer['meyer']) as string | null;
 }
 
-const mayors = mapMayersTestable(loadDataSourceMayor());
+const mayors = mapMeyersTestable(loadDataSourceMayor());
 export function findMayer(
     ico : string | null
 ): string | null {
-    return findMayerTestable(ico, mayors);
+    return findMeyerTestable(ico, mayors);
 }
