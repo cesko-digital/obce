@@ -19,18 +19,17 @@ export async function getLocation(
   });
 
   const items = response.data.data;
-
-  if (Array.isArray(items) && items.length > 0) {
-    const x = parseFloat(items[0].SOURADNICE_X);
-    const y = parseFloat(items[0].SOURADNICE_Y);
-    if (x != null && y != null) {
-      return convertCoordinatesJtskToWgs(x, y);
-    } else {
-      return null;
-    }
-  } else {
+  if (!Array.isArray(items) || !items.length) {
     return null;
   }
+
+  const x = Number(items[0].SOURADNICE_X);
+  const y = Number(items[0].SOURADNICE_Y);
+  if (isNaN(x) || isNaN(y)) {
+    return null;
+  }
+
+  return convertCoordinatesJtskToWgs(x, y);
 }
 
 export function convertCoordinatesJtskToWgs(
