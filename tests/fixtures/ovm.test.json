@@ -1,0 +1,172 @@
+{
+  "položky" : [ 
+    {
+      "type" : "orgán-veřejné-moci",
+      "id" : "orgán-veřejné-moci/00637157",
+      "identifikátor" : "00637157",
+      "název" : {
+        "cs" : "Obec Zblovice"
+      },
+      "vnitřní-organizační-jednotka" : false,
+      "ičo" : "00637157",
+      "datové-schránky" : [ {
+        "type" : "datová-schránka",
+        "id" : "datová-schránka/czkaz5z",
+        "typ-ds" : "typ-datové-schránky/OVM",
+        "identifikátor-ds" : "czkaz5z"
+      } ],
+      "seznam-kategorií" : [ {
+        "kategorie" : "kategorie-ovm/KO14",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO101",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO108",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO171",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO177",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO193",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO199",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO221",
+        "zařazení-od" : "2012-09-26"
+      }, {
+        "kategorie" : "kategorie-ovm/KO303",
+        "zařazení-od" : "2013-06-12",
+        "zařazení-do" : "2013-07-27"
+      }, {
+        "kategorie" : "kategorie-ovm/KO341",
+        "zařazení-od" : "2013-08-05"
+      }, {
+        "kategorie" : "kategorie-ovm/KO382",
+        "zařazení-od" : "2013-11-18"
+      }, {
+        "kategorie" : "kategorie-ovm/KO421",
+        "zařazení-od" : "2014-02-18"
+      }, {
+        "kategorie" : "kategorie-ovm/KO137",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO197",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO261",
+        "zařazení-od" : "2013-03-12"
+      }, {
+        "kategorie" : "kategorie-ovm/KO342",
+        "zařazení-od" : "2013-08-05"
+      } ],
+      "adresa-sídla" : {
+        "id" : "https://linked.cuzk.cz/resource/ruian/adresni-misto/10976469",
+        "kód" : "10976469"
+      },
+      "osoba-v-čele" : [ {
+        "type" : "osoba",
+        "jméno" : "JAN MÁCA"
+      } ],
+      "zahájení" : "2011-01-01",
+      "pracoviště-ovm" : [ {
+        "type" : "pracoviště",
+        "id" : "pracoviště/9905",
+        "adresa-pr" : {
+          "id" : "https://linked.cuzk.cz/resource/ruian/adresni-misto/10976469",
+          "kód" : "10976469"
+        },
+        "otevření" : "2011-01-01"
+      } ],
+      "právní-forma" : "právní-forma/801"
+    }, {
+      "type" : "orgán-veřejné-moci",
+      "id" : "orgán-veřejné-moci/00295833",
+      "identifikátor" : "00295833",
+      "název" : {
+        "cs" : "Obec Žďárec"
+      },
+      "vnitřní-organizační-jednotka" : false,
+      "ičo" : "00295833",
+      "datové-schránky" : [ {
+        "type" : "datová-schránka",
+        "id" : "datová-schránka/hnzbjgv",
+        "typ-ds" : "typ-datové-schránky/OVM",
+        "identifikátor-ds" : "hnzbjgv"
+      } ],
+      "seznam-kategorií" : [ {
+        "kategorie" : "kategorie-ovm/KO14",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO421",
+        "zařazení-od" : "2014-02-18"
+      }, {
+        "kategorie" : "kategorie-ovm/KO101",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO108",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO137",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO171",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO177",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO193",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO197",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO199",
+        "zařazení-od" : "2011-01-01"
+      }, {
+        "kategorie" : "kategorie-ovm/KO200",
+        "zařazení-od" : "2012-08-14"
+      }, {
+        "kategorie" : "kategorie-ovm/KO221",
+        "zařazení-od" : "2012-09-26"
+      }, {
+        "kategorie" : "kategorie-ovm/KO261",
+        "zařazení-od" : "2013-03-12"
+      }, {
+        "kategorie" : "kategorie-ovm/KO303",
+        "zařazení-od" : "2013-06-12",
+        "zařazení-do" : "2013-07-27"
+      }, {
+        "kategorie" : "kategorie-ovm/KO341",
+        "zařazení-od" : "2013-08-05"
+      }, {
+        "kategorie" : "kategorie-ovm/KO342",
+        "zařazení-od" : "2013-08-05"
+      }, {
+        "kategorie" : "kategorie-ovm/KO382",
+        "zařazení-od" : "2013-11-18"
+      } ],
+      "adresa-sídla" : {
+        "id" : "https://linked.cuzk.cz/resource/ruian/adresni-misto/3801888",
+        "kód" : "3801888"
+      },
+      "zahájení" : "2011-01-01",
+      "pracoviště-ovm" : [ {
+        "type" : "pracoviště",
+        "id" : "pracoviště/8159",
+        "adresa-pr" : {
+          "id" : "https://linked.cuzk.cz/resource/ruian/adresni-misto/3801888",
+          "kód" : "3801888"
+        },
+        "otevření" : "2011-01-01"
+      } ],
+      "právní-forma" : "právní-forma/801"
+    }
+  ]
+}

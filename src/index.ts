@@ -7,6 +7,7 @@ import { parseAllValidSubjects } from "./parsing";
 import { readFileSync, writeFileSync, existsSync} from "fs";
 import { Subjekt } from "./types";
 import { normalizeMunicipalityName } from "./naming";
+import { findMayer } from './meyer';
 
 /** A simple response envelope with basic metadata */
 interface Envelope {
@@ -95,6 +96,10 @@ const dataSources: DataSource<any>[] = [
         ? await getLocation(addressPoint, RUIAN_API_KEY)
         : Promise.resolve(null);
     }
+  },
+  {
+    id: "starosta",
+    fetch: async s => findMayer(s.ICO)
   },
   {
     id: "eDeskyID",

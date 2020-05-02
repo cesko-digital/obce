@@ -7,10 +7,10 @@ Základní data pochází ze [seznamu orgánů veřejné moci](https://www.czech
 * ID elektronické úřední desky ze systému [edesky.cz](https://edesky.cz). Detekce je zatím velmi hloupá, potřebuje zlepšit (pull requesty vítány!).
 * Zeměpisné souřadnice z [RÚIAN](https://www.cuzk.cz/Uvod/Produkty-a-sluzby/RUIAN/RUIAN.aspx) (načítáme přes [api.store](https://www.api.store/cuzk.cz/)).
 * Erb obce načítaný velmi chabou heuristikou z Wikipedie, potřebuje zlepšit (viz [#12](https://github.com/cesko-digital/obce/issues/12)).
+* Jméno starosty/starostky z [Egon OVM](https://rpp-opendata.egon.gov.cz/odrpp/datovasada/ovm.json)
 
 Wishlist:
 
-* [Běžný název obce pro zobrazení uživateli](https://github.com/cesko-digital/obce/issues/14)
 * [„Váha“ obce, například pro vyhledávání](https://github.com/cesko-digital/obce/issues/13)
 
 ## Příklad
@@ -68,8 +68,9 @@ Aktualizace probíhá jednou týdně v noci ze soboty na neděli.
 * Kdybyste chtěli přispět (budeme moc rádi!), tak zdrojový kód a commity anglicky, všecko ostatní může být česky.
 
 ```bash
-$ wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
-$ gunzip all.xml.gz
+$ wget -O ./.data/all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+$ gunzip -cd ./.data/all.xml.gz > all.xml
+$ wget -N ./.data/ovm.json 'https://rpp-opendata.egon.gov.cz/odrpp/datovasada/ovm.json'
 $ yarn install
 $ yarn test
 $ RUIAN_API_KEY=… LIMIT=10 yarn start
