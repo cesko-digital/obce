@@ -1,4 +1,22 @@
 /**
+ * Strip the “kind” prefix from a municipality name
+ *
+ * Ie. “Město Boskovice” -> “Boskovice”
+ */
+export function simplifiedSubjectName(name: string): string {
+  const prefixes = [
+    /obec\s*/i,
+    /město\s*/i,
+    /statutární město\s*/i,
+    /městys\s*/i
+  ];
+  for (const pattern of prefixes) {
+    name = name.replace(pattern, "");
+  }
+  return name;
+}
+
+/**
  * Normalize municipality name by stripping official prefix and fixing case.
  *
  * This is just a combination of `stripOfficialNamePrefix` and `normalizeTitleCase`.

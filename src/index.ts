@@ -6,7 +6,7 @@ import { parseXml } from "libxmljs";
 import { parseAllValidSubjects } from "./parsing";
 import { readFileSync, writeFileSync, existsSync} from "fs";
 import { Subjekt } from "./types";
-import { normalizeMunicipalityName } from "./naming";
+import { simplifiedSubjectName, normalizeMunicipalityName } from "./naming";
 
 /** A simple response envelope with basic metadata */
 interface Envelope {
@@ -22,19 +22,6 @@ interface Envelope {
 
   /** The data itself */
   municipalities: Subjekt[];
-}
-
-function simplifiedSubjectName(name: string): string {
-  const prefixes = [
-    /obec\s*/i,
-    /město\s*/i,
-    /statutární město\s*/i,
-    /městys\s*/i
-  ];
-  for (const pattern of prefixes) {
-    name = name.replace(pattern, "");
-  }
-  return name;
 }
 
 function parseItemLimit(
