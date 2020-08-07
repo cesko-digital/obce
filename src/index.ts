@@ -98,7 +98,7 @@ const dataSources: DataSource<any>[] = [
   },
   {
     id: "okres",
-    fetch: async s => s.ICO? getDistrict(s.ICO) : null
+    fetch: async s => s.ICO ? getDistrict(s.ICO) : null
   }
 ];
 
