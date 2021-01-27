@@ -9,12 +9,45 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    
+    env:
+      OVM_ENDPOINT: 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
+      OVM_DOWNLOAD: './.data/all.xml.gz'
+
     steps:
       - uses: actions/checkout@v2
+
+      - name: Atempt to restore the OVM cache
+        uses: actions/cache@v1
+        id: cache-ovm
+        with:
+          path: ./.data/
+          key: cache - ${{ hashFiles('all.xml.gz') }}
+          restore_key: all.xml.gz
+
+      - name: Check if the OVM file was modified
+        id: source-file
+        if: steps.cache-ovm.outputs.cache-hit == 'true'
+        run: |
+          CACHED=`du -b ${{ env.OVM_DOWNLOAD }} | cut -f1` 2>&1
+          REMOTE=`wget --server-response --spider '${{ env.OVM_ENDPOINT }}' 2>&1 | awk '$1 == "Content-Length:" {print $2}'`
+          if [[ "$CACHED" == "$REMOTE" ]]; then
+            echo "##[set-output name=changed;]false"
+          else
+            echo "##[set-output name=changed;]true"
+          fi
+
+      - name: Download the OVM file
+        if: steps.cache-ovm.outputs.cache-hit != 'true' || steps.source-file.changed == 'true'
+        run: |
+          wget -O ${{ env.OVM_DOWNLOAD }} '${{ env.OVM_ENDPOINT }}'
+          
+      - name: Unpack the OVM file
+        run: |
+          gunzip -dc ${{ env.OVM_DOWNLOAD }} > all.xml
+
       - name: Build & Test & Run
         run: |
-          wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
-          gunzip all.xml.gz
           yarn install
           yarn test
           LIMIT=10 RUIAN_API_KEY=${{ secrets.RUIAN_API_KEY }} yarn start
