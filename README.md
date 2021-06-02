@@ -7,6 +7,7 @@ Základní data pochází ze [seznamu orgánů veřejné moci](https://www.czech
 * ID elektronické úřední desky ze systému [edesky.cz](https://edesky.cz). Detekce je zatím velmi hloupá, potřebuje zlepšit (pull requesty vítány!).
 * Zeměpisné souřadnice z [RÚIAN](https://www.cuzk.cz/Uvod/Produkty-a-sluzby/RUIAN/RUIAN.aspx) (načítáme přes [api.store](https://www.api.store/cuzk.cz/)).
 * Erb obce načítaný velmi chabou heuristikou z Wikipedie, potřebuje zlepšit (viz [#12](https://github.com/cesko-digital/obce/issues/12)).
+* Okres obce, načítaný přes WikiData (viz [#30](https://github.com/cesko-digital/obce/issues/30))
 
 Wishlist:
 

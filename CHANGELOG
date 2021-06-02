@@ -1,3 +1,6 @@
+1.1.0 2020-8-5
+    - Přidán okres obce z WikiDat (Vojtěch Srdečný)
+
 1.0.3 2020-5-2
     - Oprava chyby v parsování souřadnic z RÚIAN (Tomas Michalek)
 
