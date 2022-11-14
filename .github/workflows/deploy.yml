@@ -4,15 +4,15 @@ on:
   push:
     branches: [master]
   schedule:
-    - cron: '59 23 * * 6'
+    - cron: "59 23 * * 6"
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
         with:
-          ref: 'master'
+          ref: "master"
       - name: Build & Test & Run
         run: |
           wget -O all.xml.gz 'https://www.czechpoint.cz/spravadat/ovm/datafile.do?format=xml&service=seznamovm'
