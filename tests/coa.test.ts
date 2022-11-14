@@ -5,6 +5,9 @@ import {
   guessMunicipalityCOA
 } from "../src/coa";
 
+const liveTest = (name: string, fn: jest.ProvidesCallback) =>
+  process.env.LIVE_TEST ? test(name, fn) : test.skip(name, fn);
+
 const sampleResponse = [
   "Boskovice",
   ["Boskovice"],
@@ -29,12 +32,12 @@ test("COA record matching", () => {
   ).toBe("%C4%8Celadn%C3%A1_CoA.svg");
 });
 
-test("Live example: Guess municipality Wiki page", async () => {
+liveTest("Live example: Guess municipality Wiki page", async () => {
   const url = await guessMunicipalityWikiPage("Tábor");
   expect(url).toBe("https://cs.wikipedia.org/wiki/T%C3%A1bor");
 });
 
-test("Live example: Guess municipality COA", async () => {
+liveTest("Live example: Guess municipality COA", async () => {
   const coa = await guessMunicipalityCOA("Boskovice");
   expect(coa).toBe(
     "https://commons.wikimedia.org/wiki/File:Boskovice_CoA_CZ.svg"
