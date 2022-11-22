@@ -1,5 +1,6 @@
 import { getEDeskyID } from "./edesky";
 import { getLocation } from "./ruian";
+import { getDistrict } from "./wikidata";
 import { guessMunicipalityCOA } from "./coa";
 import { DataSource, addExtraData } from "./sources";
 import { parseXml } from "libxmljs";
@@ -94,6 +95,10 @@ const dataSources: DataSource<any>[] = [
   {
     id: "hezkyNazev",
     fetch: async s => normalizeMunicipalityName(s.nazev)
+  },
+  {
+    id: "okres",
+    fetch: async s => s.ICO ? getDistrict(s.ICO) : null
   }
 ];
 
